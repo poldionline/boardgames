@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Brettspiele knacken – alle Taktiken</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#f3efe2;--card:#fffdf6;--ink:#1d2b2a;--mute:#5d6b69;--felt:#1f6b5c;--y:#f2b705;--r:#d6393a;--b:#2a5db0;--line:#d9d2bd}
+:root:not([data-theme="light"]){}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f2a25;--card:#173a33;--ink:#f1ecd8;--mute:#a9bdb6;--felt:#2a8a76;--line:#2d5a50}}
+:root[data-theme="dark"]{--bg:#0f2a25;--card:#173a33;--ink:#f1ecd8;--mute:#a9bdb6;--felt:#2a8a76;--line:#2d5a50}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Georgia,"Iowan Old Style",serif}
+h1,h2,h3,.tag{font-family:"Trebuchet MS","Avenir Next",Verdana,sans-serif}
+header{background:var(--felt);color:#fff;padding:56px 22px 48px;text-align:center;position:relative;overflow:hidden}
+header svg{position:absolute;inset:0;width:100%;height:100%;opacity:.16}
+header>*{position:relative}
+h1{font-size:clamp(34px,8vw,64px);line-height:1.05;margin:0 0 14px;letter-spacing:-.02em}
+header p{max-width:560px;margin:0 auto;font-size:18px;opacity:.92}
+.stats{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+.stats span{background:#0003;border-radius:30px;padding:6px 16px;font:600 14px "Trebuchet MS",sans-serif}
+nav{display:flex;gap:8px;overflow-x:auto;padding:14px 18px;background:var(--card);border-bottom:2px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+nav a{flex:none;color:var(--ink);text-decoration:none;font:600 14px "Trebuchet MS",sans-serif;padding:6px 14px;border-radius:20px;border:2px solid var(--line)}
+nav a:focus-visible,nav a:hover{background:var(--y);border-color:var(--y);color:#222;outline:none}
+main{max-width:760px;margin:0 auto;padding:28px 18px 60px}
+section{background:var(--card);border:2px solid var(--line);border-radius:26px;padding:26px 22px;margin:0 0 28px;position:relative}
+section::before{content:"";position:absolute;left:22px;top:-2px;width:70px;height:8px;border-radius:0 0 8px 8px;background:var(--c,var(--y))}
+h2{font-size:28px;margin:6px 0 4px}
+.win{display:inline-block;background:var(--c,var(--y));color:#fff;font:700 13px "Trebuchet MS",sans-serif;padding:3px 12px;border-radius:14px;margin-bottom:14px}
+ol.t{list-style:none;padding:0;margin:16px 0 0;counter-reset:s}
+ol.t li{counter-increment:s;padding:10px 0 10px 46px;position:relative;border-top:1px dashed var(--line)}
+ol.t li::before{content:counter(s);position:absolute;left:0;top:10px;width:32px;height:32px;border-radius:50%;background:var(--c,var(--y));color:#fff;font:700 15px/32px "Trebuchet MS",sans-serif;text-align:center}
+.viz{margin:18px 0 6px;text-align:center}
+.viz svg{max-width:100%;height:auto}
+.bar{display:flex;align-items:center;gap:10px;margin:6px 0;font:600 13px "Trebuchet MS",sans-serif}
+.bar i{display:block;height:20px;border-radius:10px;background:var(--c)}
+.bar b{min-width:92px;text-align:left;font-weight:600}
+.note{color:var(--mute);font-size:15px;margin:10px 0 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.two{grid-template-columns:1fr}}
+footer{text-align:center;color:var(--mute);padding:0 20px 40px;font-size:14px}
+@media (prefers-reduced-motion:no-preference){.bar i{animation:g 1s ease-out both}@keyframes g{from{width:0!important}}}
+</style>
+</head>
+<body>
+<header>
+<svg aria-hidden="true" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice"><g fill="#fff"><circle cx="40" cy="40" r="22"/><circle cx="120" cy="150" r="30"/><circle cx="260" cy="50" r="26"/><circle cx="350" cy="140" r="34"/><rect x="190" y="110" width="40" height="40" rx="6"/></g></svg>
+<h1>Brettspiele knacken</h1>
+<p>Die Taktiken aus dem Video: Mark Rober gegen seinen Statistiklehrer Mr. Malloy – mit Daten aus Hunderten Duellen.</p>
+<div class="stats"><span>8 Spiele</span><span>Guess Who: 96 % Siegquote</span><span>Tic-Tac-Toe: 95 %</span></div>
+</header>
+<nav aria-label="Spiele">
+<a href="#guess">Guess Who</a><a href="#rps">Schere-Stein-Papier</a><a href="#coin">Münzwurf</a><a href="#c4">Vier gewinnt</a><a href="#ship">Schiffe versenken</a><a href="#ttt">Tic-Tac-Toe</a><a href="#jenga">Jenga</a><a href="#mono">Monopoly</a>
+</nav>
+<main>
+
+<section id="guess" style="--c:#8e5bd6">
+<h2>Guess Who</h2><span class="win">96 % Siegquote (Best of 5)</span>
+<p>Halbiere mit jeder Frage die Zahl der übrigen Figuren, zum Beispiel: „Beginnt der Name mit A bis M?“ Danach „A bis E?“ und so weiter. Im Schnitt gewinnst du nach 5,5 Fragen.</p>
+<div class="viz" role="img" aria-label="Figuren halbieren sich mit jeder Frage">
+<div class="bar"><b>Start</b><i style="width:100%"></i><span>24</span></div>
+<div class="bar"><b>Frage 1</b><i style="width:50%"></i><span>12</span></div>
+<div class="bar"><b>Frage 2</b><i style="width:25%"></i><span>6</span></div>
+<div class="bar"><b>Frage 3</b><i style="width:12.5%"></i><span>3</span></div>
+<div class="bar"><b>Frage 4–5</b><i style="width:4%"></i><span>1</span></div>
+</div>
+</section>
+
+<section id="rps" style="--c:#e0613a">
+<h2>Schere, Stein, Papier</h2><span class="win">~90 % mit Trick 1 · 75 % mit Trick 2</span>
+<div class="viz"><svg width="260" height="190" viewBox="0 0 260 190" role="img" aria-label="Verlierer wechselt zum Nächsten: Schere, Stein, Papier">
+<g fill="none" stroke="var(--mute)" stroke-width="3"><path d="M130 52 L195 140"/><path d="M185 152 L75 152"/><path d="M65 140 L120 52"/></g>
+<g font-size="38" text-anchor="middle"><text x="130" y="48">✌️</text><text x="210" y="170">✊</text><text x="50" y="170">✋</text></g>
+<text x="130" y="110" text-anchor="middle" font-size="12" fill="var(--mute)" font-family="sans-serif">Verlierer wechselt im Kreis</text></svg></div>
+<ol class="t">
+<li><b>Überrumple ihn.</b> Fordere direkt heraus und sag „Schere, Stein, Papier, los“ – fast immer kommt Schere.</li>
+<li><b>Schlage, was gewonnen hat.</b> Gewinner bleiben, Verlierer wechseln zur nächsten Geste. Merk dir die Siegergeste und wirf, was sie schlägt. Das bringt über 20 Runden etwa 75 %.</li>
+</ol>
+</section>
+
+<section id="coin" style="--c:#c99a06">
+<h2>Münzwurf</h2><span class="win">Du verlierst nie</span>
+<div class="viz"><svg width="260" height="110" viewBox="0 0 260 110" role="img" aria-label="Münze wackelt wie eine Sanduhr"><g fill="var(--y)" stroke="#8a6a00" stroke-width="3"><ellipse cx="60" cy="55" rx="36" ry="36"/><ellipse cx="130" cy="55" rx="30" ry="16" transform="rotate(-45 130 55)"/><ellipse cx="200" cy="55" rx="36" ry="36"/></g><g font-family="sans-serif" font-size="12" fill="var(--ink)" text-anchor="middle"><text x="60" y="100">fairer Wurf</text><text x="200" y="100">Trickwurf</text></g></svg></div>
+<ol class="t">
+<li>Hebe den Arm und <b>drehe das Handgelenk im letzten Moment um 45°</b>. Die Münze wackelt wie eine Sanduhr, und die Seite oben bleibt oben.</li>
+<li>Ruft dein Gegner „Kopf“, starte den Trickwurf mit <b>Kopf nach unten</b>.</li>
+</ol>
+</section>
+
+<section id="c4" style="--c:#d6393a">
+<h2>Vier gewinnt</h2>
+<div class="viz"><svg id="g4" width="250" height="200" viewBox="0 0 200 160" role="img" aria-label="Schnabelform: rote Dreierreihe oben mit Spitze darunter"></svg></div>
+<ol class="t">
+<li><b>Besetze die mittlere Spalte.</b> Jede horizontale und diagonale Vierer-Reihe läuft durch sie.</li>
+<li><b>Baue die Schnabelform.</b> Drei Steine in einer Reihe mit einem Stein mittig darunter bilden die Spitze, dazu kommt ein Stein auf der Diagonale. Blockt dein Gegner deine erste Vierer-Reihe, ermöglicht dir das die zweite. Die Form wirkt gedreht und gespiegelt genauso.</li>
+</ol>
+<p class="note">Im Bild bildet Rot den Schnabel (nach dem Beispiel im Video). Die gestrichelten Felder links und rechts sind die Enden der Dreierreihe, die jetzt drohen.</p>
+</section>
+
+<section id="ship" style="--c:#2a5db0">
+<h2>Schiffe versenken</h2><span class="win">45 Züge statt 60</span>
+<div class="viz"><svg id="g5" width="260" height="260" viewBox="0 0 260 260" role="img" aria-label="Schachbrett-Suche mit Heatmap zur Mitte"></svg></div>
+<ol class="t">
+<li><b>Suche im Schachbrettmuster.</b> Jedes Schiff ist mindestens 2 Felder lang, also findest du es mit halb so vielen Schüssen.</li>
+<li><b>Bei einem Treffer</b> suchst du oben, unten, links und rechts, bis das Schiff versenkt ist.</li>
+<li><b>Ist das kleinste Schiff versenkt,</b> schießt du nur noch auf jedes dritte Feld.</li>
+<li><b>Ziele auf die größte freie Fläche.</b> Dort liegt ein Schiff am wahrscheinlichsten, an den Rändern am seltensten.</li>
+</ol>
+<div class="bar"><b>Zufällig + Nachbarn</b><i style="width:100%;--c:#9aa7b8"></i><span>60</span></div>
+<div class="bar"><b>Schachbrett</b><i style="width:83%"></i><span>50</span></div>
+<div class="bar"><b>+ Mitte zuerst</b><i style="width:75%;--c:#1f8a5c"></i><span>45</span></div>
+</section>
+
+<section id="ttt" style="--c:#1f8a5c">
+<h2>Tic-Tac-Toe</h2><span class="win">95 % Siegquote</span>
+<div class="viz"><svg width="190" height="190" viewBox="0 0 190 190" role="img" aria-label="Ecken besetzen und Falle stellen"><g stroke="var(--mute)" stroke-width="4" stroke-linecap="round"><path d="M65 8V182M125 8V182M8 65H182M8 125H182"/></g><g stroke="var(--r)" stroke-width="7" stroke-linecap="round"><path d="M20 20L50 50M50 20L20 50"/><path d="M140 20L170 50M170 20L140 50"/><path d="M20 140L50 170M50 140L20 170"/></g><g font-family="sans-serif" font-size="12" fill="var(--mute)" text-anchor="middle"><text x="95" y="36">Drohung</text><text x="35" y="100">Drohung</text></g></svg></div>
+<ol class="t">
+<li><b>Geh zuerst</b> (Münzwurf!) und nimm eine Ecke.</li>
+<li>Nimm eine <b>zweite Ecke</b>, die mit dem Sieg droht.</li>
+<li>Stelle in der letzten Ecke die <b>Falle</b>: zwei Gewinnchancen gleichzeitig, und dein Gegner kann nur eine blocken.</li>
+</ol>
+<p class="note">Wer nicht in die Mitte geht, verliert garantiert. Geht er doch hinein, gewinnst du noch etwa die Hälfte der Spiele.</p>
+</section>
+
+<section id="jenga" style="--c:#b5722a">
+<h2>Jenga</h2><span class="win">82–85 % Siegquote</span>
+<div class="viz"><svg id="gj" width="200" height="190" viewBox="0 0 200 190" role="img" aria-label="Jenga-Turm"></svg></div>
+<ol class="t">
+<li><b>Teste jeden Stein</b> und ziehe einen lockeren. Die Ungenauigkeit ist Absicht, die Höhen schwanken bis zu 1 mm.</li>
+<li><b>Teste bei jedem Zug neu.</b> Der Turm verlagert sein Gewicht, deshalb werden neue Steine locker.</li>
+<li><b>Klemmt ein Stein, dann schnell klapsen.</b> Das Losreißen braucht mehr Kraft als das Gleiten (statische gegen kinetische Reibung), und ein kurzer Ruck belastet den Turm weniger als langsames Ziehen.</li>
+<li><b>Zähle die sicheren Züge.</b> Mach den Zug, nach dem dein Gegner eine <em>gerade</em> Zahl hat. Null zählt als gerade, und dann hat er keinen mehr.</li>
+</ol>
+</section>
+
+<section id="mono" style="--c:#e08a1b">
+<h2>Monopoly</h2>
+<p>Spiel nach den echten Regeln: kein Free-Parking-Jackpot, und ein nicht gekauftes Grundstück kommt sofort in die Auktion. Zu zweit dauert das dann nur etwas über 30 Minuten.</p>
+<div class="viz"><svg width="300" height="84" viewBox="0 0 300 84" role="img" aria-label="Gefängnis und die orangenen Felder 6, 8 und 9 Felder danach"><g stroke="var(--ink)" stroke-width="2" fill="var(--card)"><rect x="4" y="22" width="44" height="52" rx="4"/></g><g stroke="var(--ink)" stroke-width="2" fill="#e08a1b"><rect x="190" y="22" width="32" height="52" rx="4"/><rect x="228" y="22" width="32" height="52" rx="4"/><rect x="266" y="22" width="30" height="52" rx="4"/></g><g stroke="var(--line)" stroke-width="2" fill="none"><rect x="54" y="22" width="28" height="52"/><rect x="86" y="22" width="28" height="52"/><rect x="118" y="22" width="28" height="52"/><rect x="150" y="22" width="34" height="52"/></g><g font-family="sans-serif" font-size="11" fill="var(--ink)" text-anchor="middle"><text x="26" y="52">🚔</text><text x="26" y="16">Gefängnis</text><text x="206" y="16">+6</text><text x="244" y="16">+8</text><text x="281" y="16">+9</text></g></svg></div>
+<ol class="t">
+<li><b>Baue schnell drei Häuser.</b> Dort springt die Miete am stärksten im Verhältnis zu den Kosten, und die Bank hat bald keine Häuser mehr, sodass dein Gegner nicht bauen kann.</li>
+<li><b>Kauf die Orangenen.</b> Das Gefängnis ist das meistbetretene Feld, und die Orangenen liegen 6, 8 und 9 Felder dahinter, also genau dort, wo am häufigsten gewürfelt wird. Außerdem sind sie günstiger zu bebauen.</li>
+<li><b>Gefängnis:</b> Zahl dich früh frei, um Grundstücke zu ergattern. Bleib später drin, denn du zahlst keine Miete und kassierst trotzdem.</li>
+<li><b>Handle fair.</b> Mit einem Tyrannen handelt niemand, und ohne Handel gewinnst du nicht.</li>
+</ol>
+<p class="note">Auch ganz einfach: kaufe alles, worauf du landest. Das ist nur nicht die ganze Strategie.</p>
+</section>
+
+</main>
+<footer>Zusammengestellt nach dem Transkript des Videos. Squirrel Dash und Hungry Hippos haben keine Strategie: Das erste musst du selbst herausfinden, beim zweiten drückst du einfach den Knopf.</footer>
+<script>
+(function(){
+var NS="http://www.w3.org/2000/svg";
+function el(p,n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e}
+// Vier gewinnt
+var g=document.getElementById("g4");
+el(g,"rect",{x:0,y:0,width:200,height:160,rx:8,fill:"#f6dc7a"});
+var red={"1,1":1,"2,1":1,"3,1":1,"2,2":1,"1,3":1},yel={"1,2":1,"3,2":1,"2,3":1,"3,3":1},ghost={"0,1":1,"4,1":1};
+for(var c=0;c<5;c++)for(var r=0;r<4;r++){var k=c+","+r;el(g,"circle",{cx:c*40+20,cy:r*40+20,r:15,fill:red[k]?"#e8644a":yel[k]?"#262626":"#e9c3e6",stroke:ghost[k]?"#2a5db0":"none","stroke-width":3,"stroke-dasharray":ghost[k]?"4 3":"0"})}
+// Schiffe
+var s=document.getElementById("g5");
+for(var x=0;x<10;x++)for(var y=0;y<10;y++){var d=Math.abs(x-4.5)+Math.abs(y-4.5),o=Math.max(.08,.9-d*.1),chk=(x+y)%2==0;
+el(s,"rect",{x:x*26,y:y*26,width:24,height:24,rx:4,fill:"#2a5db0","fill-opacity":o});
+if(chk)el(s,"circle",{cx:x*26+12,cy:y*26+12,r:4,fill:"#fff","fill-opacity":".85"})}
+// Jenga
+var j=document.getElementById("gj"),cols=["#c68642","#b5722a","#d19a5b"];
+for(var i=0;i<8;i++){for(var n=0;n<3;n++){var horiz=i%2==0;
+if(horiz)el(j,"rect",{x:20+n*54,y:170-i*20,width:52,height:18,rx:3,fill:cols[(n+i)%3]});
+else el(j,"rect",{x:20+n*54,y:170-i*20,width:52,height:18,rx:3,fill:cols[(n+i+1)%3],"fill-opacity":".85"})}}
+el(j,"rect",{x:128,y:150,width:52,height:18,rx:3,fill:"none",stroke:"var(--r)","stroke-width":3,"stroke-dasharray":"5 3"});
+})();
+</script>
+</body>
+</html>
